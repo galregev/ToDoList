@@ -1,0 +1,42 @@
+        for (i=0; i<all_notes.length; i++) {
+
+            myId++;
+            // The note div.
+            var theNote = document.createElement("DIV");
+            theNote.setAttribute("id", "noteId");
+            theNote.setAttribute("class", "note");
+
+            // The "X" Btn.
+            var x_btn = document.createElement("I");
+            x_btn.classList.add("far", "fa-times-circle", "x", "remove");
+            x_btn.setAttribute('id','item'+myId);
+            x_btn.setAttribute('onClick','del_item(myId)');
+            theNote.appendChild(x_btn);
+
+            // The paragraph of the note.
+            var para = document.createElement("P");
+            para.setAttribute("class", "noteText");
+            var note_text = document.createTextNode(all_notes[i].text);
+            para.appendChild(note_text); 
+            theNote.appendChild(para);
+
+            // The DateAndTime span.
+            var span = document.createElement("span");
+            span.setAttribute("class", "noteDate");
+            var dateIcon = document.createElement("I");
+            dateIcon.classList.add("far", "fa-calendar");
+            span.appendChild(dateIcon);
+            var timeDate = document.createTextNode(all_notes[i].date);
+            span.appendChild(timeDate);
+
+            timeIcon = document.createElement("I");
+            timeIcon.classList.add("far", "fa-clock");
+            span.appendChild(timeIcon);
+            var timeText = document.createTextNode(all_notes[i].time);
+            span.appendChild(timeText);
+
+            theNote.appendChild(span);
+            
+            // The Finall note.
+            document.getElementById('noteContainer').appendChild(theNote);
+        }
