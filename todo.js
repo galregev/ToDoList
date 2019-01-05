@@ -3,12 +3,11 @@ var all_notes = [];
 var myId = 0; 
 
 // Create a new Object.
-function noteObj(text, date, time, id) {
+function noteObj(text, date, time) {
     var notes = {
         text : text,
         date : date,
         time : time,
-        id : id
     }
     return notes;
 }
@@ -41,14 +40,13 @@ function checkForm() {
         messege.innerHTML = "*תאריך יעד למשימה לא יכול להיות בעבר.";
     } else {
         
-        myId++;
-        all_notes.push(noteObj(noteText.value, noteDate.value, noteTime.value, myId));
+        all_notes.push(noteObj(noteText.value, noteDate.value, noteTime.value));
         localStorage.setItem("items", JSON.stringify(all_notes));
         document.getElementById('noteContainer').innerHTML = "";
        
         
             
-            console.log(myId);
+            
             addNew();
         
 
@@ -59,21 +57,14 @@ function checkForm() {
 function addNew() {
 
     for (i=0; i<all_notes.length; i++) {
-        var selected = all_notes[i].id;
         // The note div.
         var theNote = document.createElement("DIV");
         theNote.className = "note";
-        theNote.id = selected;
+        theNote.id = i;
         // The "X" Btn.
         var x_btn = document.createElement("I");
         x_btn.classList.add("far", "fa-times-circle", "x", "remove");
-        x_btn.onclick = function(){
-            
-            console.log(x_btn.parentElement);
-            var id = x_btn.parentElement.childNodes.id;
-            var NewId = Number(id);
-            console.log(NewId);
-        };
+        x_btn.setAttribute ("onclick","del_item(this.parentNode.id)");
         theNote.appendChild(x_btn);
 
         // The paragraph of the note.
@@ -102,7 +93,6 @@ function addNew() {
         
         // The Finall note.
         document.getElementById('noteContainer').appendChild(theNote);
-        selected++;
     }
 }
 
@@ -132,8 +122,21 @@ saveNote.addEventListener("click", checkForm);
 clear_Form.addEventListener("click", clearForm);
 
 // Remove one Note only.
-function del_item() {
 
+function del_item(id) {
+    all_notes.splice(id, 1);
+        localStorage.setItem("items", JSON.stringify(all_notes));
+        var note = document.getElementById(id);
+        note.remove();
+        setID (id);
+}
+
+function setID (id) {
+    var nextID = parseInt(id) + 1;
+    for (var i = nextID; i <= all_notes.length; i++) {
+        var note = document.getElementById(i);
+        note.id = i - 1;
+    }
 }
 
 // Clear the form inputs.
