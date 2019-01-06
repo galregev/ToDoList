@@ -59,23 +59,42 @@ function addNew() {
     for (i=0; i<all_notes.length; i++) {
         // The note div.
         var theNote = document.createElement("DIV");
-        theNote.className = "note";
+        theNote.classList.add("note", "editMode");
         theNote.id = i;
         theNote.style.display = 'inline-block';
         setTimeout(function() {
             theNote.className = theNote.className + " fadein";
           }, 10);
+
         // The "X" Btn.
         var x_btn = document.createElement("I");
-        x_btn.classList.add("far", "fa-times-circle", "x", "remove");
+        x_btn.classList.add("far", "fa-times-circle", "x", "remove", "editMode");
         x_btn.setAttribute ("onclick","del_item(this.parentNode.id)");
         theNote.appendChild(x_btn);
 
+        //input (text)
+        var editInput = document.createElement("input"); // text
+        editInput.className = "editIn";
+        editInput.setAttribute("type", "text");
+        
+        //button.edit
+        var editButton = document.createElement("button");
+
+        //Each element needs modifying.
+        editButton.innerText = "עריכה";
+        editButton.className = "editable";
+        editButton.setAttribute ("onclick","editTask(this.parentNode.parentNode.id)");
+
         // The paragraph of the note.
         var para = document.createElement("P");
-        para.className = "noteText";
+        para.classList.add("noteText", "editMode");
         var note_text = document.createTextNode(all_notes[i].text);
+
+        var label = document.createElement("label");
+
         para.appendChild(note_text); 
+        para.appendChild(editButton);
+        para.appendChild(editInput);
         theNote.appendChild(para);
 
         // The DateAndTime span.
@@ -125,8 +144,33 @@ var messege = document.getElementById("messege"); // Succes or Error Messege.
 saveNote.addEventListener("click", checkForm);
 clear_Form.addEventListener("click", clearForm);
 
-// Remove one Note only.
+// Edit Mession.
+function editTask(id) {
+        console.log("Edit task...");
+        
+        var listItem = this.parentNode.parentNode;
+        
+        var editInput = listItem.querySelector("input[type=text]");
+        var p = document.querySelector("p");
+            
+        var containsClass = listItem.classList.contains("editMode");
+            
+        //if the class of the parent is .editMode
+        if(containsClass) {
+        //Switch from .editMode
+        //label text become the input's value
+            p.textContent = "gal";
+            
+        } else {
+                editInput.value = p.textContent;
+        }
+            
+        //Toggle .editMode on the list item
+        p.classList.toggle("editMode");
+            
+    }
 
+// Remove one Note only.
 function del_item(id) {
     all_notes.splice(id, 1);
         localStorage.setItem("items", JSON.stringify(all_notes));

@@ -444,6 +444,38 @@ p.noteText {
   right: 0;
   width: 140px;
   height: 110px;
+
+  input[type=text] {
+    display:none;
+  }
+
+  // Edit mode.
+  &.editMode input[type=text] {
+    display:block;
+  }
+  
+  &.editMode label {
+    display:none;
+  }
+
+}
+
+button.editable {
+  display: block;
+  width: auto;
+  height: auto;
+  padding: 5px;
+  margin: 7px auto;
+  border: 1px solid #e3e3e3;
+  border-radius: 7px;
+  background: transparent;
+  color: rgb(114, 114, 114);
+}
+
+.editIn {
+  border-radius: 7px;
+  outline: none;
+  border: 1px solid #e3e3e3;
 }
 
 .noteDate {
@@ -453,10 +485,6 @@ p.noteText {
   font-size: 14px;
   display: none;
   color: #6e6e6e;
-}
-
-.note:hover .noteDate {
-
 }
 
 #clearStorage {

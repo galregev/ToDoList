@@ -459,6 +459,36 @@ p.noteText {
   height: 110px;
 }
 
+p.noteText input[type=text] {
+  display: none;
+}
+
+p.noteText.editMode input[type=text] {
+  display: block;
+}
+
+p.noteText.editMode label {
+  display: none;
+}
+
+button.editable {
+  display: block;
+  width: auto;
+  height: auto;
+  padding: 5px;
+  margin: 7px auto;
+  border: 1px solid #e3e3e3;
+  border-radius: 7px;
+  background: transparent;
+  color: #727272;
+}
+
+.editIn {
+  border-radius: 7px;
+  outline: none;
+  border: 1px solid #e3e3e3;
+}
+
 .noteDate {
   position: absolute;
   bottom: 5px;
