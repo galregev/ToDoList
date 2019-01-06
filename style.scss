@@ -234,6 +234,12 @@ label {
   color: white;
 }
 
+label#time {
+  font-size: 14px;
+  display: inline;
+  color: #6e6e6e;
+}
+
 #messege {
   color: red;
   width: 400px;
@@ -386,6 +392,45 @@ form > #clearForm {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 
+  button.editable {
+    border: 1px solid #e3e3e3;
+    border-radius: 7px;
+    display: block;
+    height: 30px;
+    padding: 7px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    bottom: 12%;
+    color: #fff;
+    border: 1px solid #044a99;
+    background: linear-gradient(to bottom, rgb(43, 128, 177), rgb(18, 77, 100));
+    transition: all 1s;
+    
+
+    &:hover {
+      background: linear-gradient(to top, rgb(43, 128, 177), rgb(18, 77, 100));
+    }
+
+  }
+
+  .editIn {
+    display: none;
+    border-radius: 7px;
+    outline: none;
+    position: absolute;
+    left: 50%;
+    bottom: 30%;
+    transform: translate(-50%, 0);
+    z-index: 5;
+    width: 101%;
+    height: auto;
+    padding: 10px;
+    border: 1px solid #e3e3e3;
+    background: linear-gradient(to bottom, #fff, #acacac);
+    box-shadow: 0px 5px 20px 0px rgb(51, 33, 1);
+  }
+
   &:hover {
     -webkit-box-shadow: 0 15px 35px rgba(117, 117, 117, 0.7);
     box-shadow: 0 15px 35px rgba(117, 117, 117, 0.7);
@@ -438,44 +483,18 @@ p.noteText {
   word-wrap: break-word;
   position: absolute;
   font-family: noteFont;
-  text-align: cnter;
-  padding-right: 20px;
+  text-align: center;
+  cursor: pointer;
   top: 28%;
-  right: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
   width: 140px;
-  height: 110px;
-
-  input[type=text] {
-    display:none;
-  }
-
-  // Edit mode.
-  &.editMode input[type=text] {
-    display:block;
-  }
-  
-  &.editMode label {
-    display:none;
-  }
-
+  height: 90px;
 }
 
-button.editable {
-  display: block;
-  width: auto;
-  height: auto;
-  padding: 5px;
-  margin: 7px auto;
-  border: 1px solid #e3e3e3;
-  border-radius: 7px;
-  background: transparent;
-  color: rgb(114, 114, 114);
-}
-
-.editIn {
-  border-radius: 7px;
-  outline: none;
-  border: 1px solid #e3e3e3;
+// Edit mode.
+.editMode input[type=text] {
+  display:block;
 }
 
 .noteDate {
@@ -509,6 +528,5 @@ button.editable {
     }
 
 }
-
 
 /*# sourceMappingURL=style.css.map */

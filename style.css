@@ -246,6 +246,12 @@ label {
   color: white;
 }
 
+label#time {
+  font-size: 14px;
+  display: inline;
+  color: #6e6e6e;
+}
+
 #messege {
   color: red;
   width: 400px;
@@ -402,6 +408,50 @@ form > #clearForm {
   transition: all 0.3s;
 }
 
+.note button.editable {
+  border: 1px solid #e3e3e3;
+  border-radius: 7px;
+  display: block;
+  height: 30px;
+  padding: 7px;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+  bottom: 12%;
+  color: #fff;
+  border: 1px solid #044a99;
+  background: -webkit-gradient(linear, left top, left bottom, from(#2b80b1), to(#124d64));
+  background: linear-gradient(to bottom, #2b80b1, #124d64);
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+.note button.editable:hover {
+  background: -webkit-gradient(linear, left bottom, left top, from(#2b80b1), to(#124d64));
+  background: linear-gradient(to top, #2b80b1, #124d64);
+}
+
+.note .editIn {
+  display: none;
+  border-radius: 7px;
+  outline: none;
+  position: absolute;
+  left: 50%;
+  bottom: 30%;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+  z-index: 5;
+  width: 101%;
+  height: auto;
+  padding: 10px;
+  border: 1px solid #e3e3e3;
+  background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#acacac));
+  background: linear-gradient(to bottom, #fff, #acacac);
+  -webkit-box-shadow: 0px 5px 20px 0px #332101;
+          box-shadow: 0px 5px 20px 0px #332101;
+}
+
 .note:hover {
   -webkit-box-shadow: 0 15px 35px rgba(117, 117, 117, 0.7);
   box-shadow: 0 15px 35px rgba(117, 117, 117, 0.7);
@@ -451,42 +501,18 @@ p.noteText {
   word-wrap: break-word;
   position: absolute;
   font-family: noteFont;
-  text-align: cnter;
-  padding-right: 20px;
+  text-align: center;
+  cursor: pointer;
   top: 28%;
-  right: 0;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
   width: 140px;
-  height: 110px;
+  height: 90px;
 }
 
-p.noteText input[type=text] {
-  display: none;
-}
-
-p.noteText.editMode input[type=text] {
+.editMode input[type=text] {
   display: block;
-}
-
-p.noteText.editMode label {
-  display: none;
-}
-
-button.editable {
-  display: block;
-  width: auto;
-  height: auto;
-  padding: 5px;
-  margin: 7px auto;
-  border: 1px solid #e3e3e3;
-  border-radius: 7px;
-  background: transparent;
-  color: #727272;
-}
-
-.editIn {
-  border-radius: 7px;
-  outline: none;
-  border: 1px solid #e3e3e3;
 }
 
 .noteDate {

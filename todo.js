@@ -59,7 +59,7 @@ function addNew() {
     for (i=0; i<all_notes.length; i++) {
         // The note div.
         var theNote = document.createElement("DIV");
-        theNote.classList.add("note", "editMode");
+        theNote.classList.add("note");
         theNote.id = i;
         theNote.style.display = 'inline-block';
         setTimeout(function() {
@@ -68,7 +68,7 @@ function addNew() {
 
         // The "X" Btn.
         var x_btn = document.createElement("I");
-        x_btn.classList.add("far", "fa-times-circle", "x", "remove", "editMode");
+        x_btn.classList.add("far", "fa-times-circle", "x", "remove");
         x_btn.setAttribute ("onclick","del_item(this.parentNode.id)");
         theNote.appendChild(x_btn);
 
@@ -76,6 +76,7 @@ function addNew() {
         var editInput = document.createElement("input"); // text
         editInput.className = "editIn";
         editInput.setAttribute("type", "text");
+        editInput.setAttribute("value", "הזן טקסט לעריכה");
         
         //button.edit
         var editButton = document.createElement("button");
@@ -83,22 +84,61 @@ function addNew() {
         //Each element needs modifying.
         editButton.innerText = "עריכה";
         editButton.className = "editable";
-        editButton.setAttribute ("onclick","editTask(this.parentNode.parentNode.id)");
+        editButton.onclick = editTask;
 
         // The paragraph of the note.
         var para = document.createElement("P");
-        para.classList.add("noteText", "editMode");
-        var note_text = document.createTextNode(all_notes[i].text);
+        para.innerText = all_notes[i].text;
+        para.classList.add("noteText");
+        para.onclick = openEdit;
+        //var note_text = document.createTextNode(all_notes[i].text);
 
-        var label = document.createElement("label");
-
-        para.appendChild(note_text); 
-        para.appendChild(editButton);
-        para.appendChild(editInput);
+        //para.appendChild(note_text); 
+        theNote.appendChild(editButton);
+        theNote.appendChild(editInput);
         theNote.appendChild(para);
+
+        // EditMode.
+        function openEdit() {
+            
+            // Define the ModelBox.
+            editButton.style.display = "block";
+            editInput.style.display = "block";
+
+        }
+
+        // Edit Mession.
+        function editTask() {
+            console.log("Edit task...");
+            
+            var listItem = this.parentNode;
+            listItem.classList.add("editMode");
+            var editInput = listItem.querySelector("input[type=text]");
+            editInput.style.display = "block";
+            var p = listItem.querySelector("p");
+                
+            var containsClass = listItem.classList.contains("editMode");
+                
+            //if the class of the parent is .editMode
+            if(containsClass) {
+            //P text become the input's value
+                p.innerHTML = editInput.value;
+                console.log(listItem.id);
+                var newText = listItem.querySelector("p.noteText").innerText;
+                var newTime = listItem.querySelector("label#time").innerText;
+                var newDate = listItem.querySelector("span#date").innerText.substring(0,10);
+
+                all_notes[listItem.id] = noteObj(newText, newTime, newDate);
+                localStorage.setItem("items", JSON.stringify(all_notes));
+            } else {
+                editInput.value = p.textContent;
+            }
+                
+        }
 
         // The DateAndTime span.
         var span = document.createElement("span");
+        span.id = "date";
         span.className = "noteDate";
         var dateIcon = document.createElement("I");
         dateIcon.classList.add("far", "fa-calendar");
@@ -106,12 +146,18 @@ function addNew() {
         var timeDate = document.createTextNode(all_notes[i].date);
         span.appendChild(timeDate);
 
+
+
+        // label time.
+        var span2 = document.createElement("label");
+        span2.id = "time";
         timeIcon = document.createElement("I");
         timeIcon.classList.add("far", "fa-clock");
-        span.appendChild(timeIcon);
+        span2.appendChild(timeIcon);
         var timeText = document.createTextNode(all_notes[i].time);
-        span.appendChild(timeText);
+        span2.appendChild(timeText);
 
+        span.appendChild(span2);
         theNote.appendChild(span);
         
         // The Finall note.
@@ -143,32 +189,6 @@ var messege = document.getElementById("messege"); // Succes or Error Messege.
 // EventListener.
 saveNote.addEventListener("click", checkForm);
 clear_Form.addEventListener("click", clearForm);
-
-// Edit Mession.
-function editTask(id) {
-        console.log("Edit task...");
-        
-        var listItem = this.parentNode.parentNode;
-        
-        var editInput = listItem.querySelector("input[type=text]");
-        var p = document.querySelector("p");
-            
-        var containsClass = listItem.classList.contains("editMode");
-            
-        //if the class of the parent is .editMode
-        if(containsClass) {
-        //Switch from .editMode
-        //label text become the input's value
-            p.textContent = "gal";
-            
-        } else {
-                editInput.value = p.textContent;
-        }
-            
-        //Toggle .editMode on the list item
-        p.classList.toggle("editMode");
-            
-    }
 
 // Remove one Note only.
 function del_item(id) {
