@@ -61,6 +61,10 @@ function addNew() {
         var theNote = document.createElement("DIV");
         theNote.className = "note";
         theNote.id = i;
+        theNote.style.display = 'inline-block';
+        setTimeout(function() {
+            theNote.className = theNote.className + " fadein";
+          }, 10);
         // The "X" Btn.
         var x_btn = document.createElement("I");
         x_btn.classList.add("far", "fa-times-circle", "x", "remove");
