@@ -198,7 +198,7 @@ h4#sub:after {
 **     The Form       ***
 -----------------------*/
 form#toDoList {
-  width: 50%;
+  width: 70%;
   height: auto;
   margin: 65px auto;
   padding: 25px;
@@ -287,80 +287,85 @@ form > .placeTop input:focus {
           transform: scale(1.15);
 }
 
-form > .add-note {
-  letter-spacing: 2px;
-  text-align: center;
-  color: #fff;
-  font-size: 24px;
-  font-family: alefBold;
-  padding: 10px;
-  width: 250px;
-  height: auto;
-  margin-top: 30px;
-  margin-right: 20px;
-  border: 1px solid #044a99;
-  border-top-right-radius: 25px;
-  border-bottom-left-radius: 25px;
-  background: -webkit-gradient(linear, left bottom, left top, color-stop(30%, #044a99), to(#438af5));
-  background: linear-gradient(to top, #044a99 30%, #438af5 100%);
-  color: #FFF;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-}
+#buttons {
+  width: 70%;
+  margin: auto;
 
-form > .add-note:hover, form > #add-note:active {
-  color: #fff;
-  border-color: blue;
-  animation: tada 1s;
-  background: -webkit-gradient(linear, left bottom, left top, color-stop(30%, #044a99), to(#438af5));
-  background: linear-gradient(to top, #044a99 30%, #438af5 100%);
-}
+  .add-note {
+    letter-spacing: 2px;
+    text-align: center;
+    color: #fff;
+    font-size: 24px;
+    font-family: alefBold;
+    padding: 10px;
+    width: 40%;
+    height: auto;
+    margin-top: 30px;
+    margin-right: 20px;
+    border: 1px solid #044a99;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    background: -webkit-gradient(linear, left bottom, left top, color-stop(30%, #044a99), to(#438af5));
+    background: linear-gradient(to top, #044a99 30%, #438af5 100%);
+    color: #FFF;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+  }
 
-form > .add-note span {
-  display: inline-block;
-  position: relative;
-  padding-left: 0;
-  -webkit-transition: padding-left 0.5s;
-  transition: padding-left 0.5s;
-}
+  .add-note:hover, form > #add-note:active {
+    color: #fff;
+    border-color: blue;
+    animation: tada 1s;
+    background: -webkit-gradient(linear, left bottom, left top, color-stop(30%, #044a99), to(#438af5));
+    background: linear-gradient(to top, #044a99 30%, #438af5 100%);
+  }
 
-form > .add-note span:after {
-  content: ' ';
-  position: absolute;
-  top: 0;
-  left: -18px;
-  opacity: 0;
-  width: 10px;
-  height: 10px;
-  margin-top: -10px;
-  background: rgba(0, 0, 0, 0);
-  border: 3px solid #FFF;
-  border-top: none;
-  border-left: none;
-  -webkit-transform: rotate(135deg);
-          transform: rotate(135deg);
-  -webkit-transition: opacity 0.5s, top 0.5s, right 0.5s;
-  transition: opacity 0.5s, top 0.5s, right 0.5s;
-}
+  .add-note span {
+    display: inline-block;
+    position: relative;
+    padding-left: 0;
+    -webkit-transition: padding-left 0.5s;
+    transition: padding-left 0.5s;
+  }
 
-form > .add-note:hover span, form > .add-note:active span {
-  padding-left: 30px;
-}
+  .add-note span:after {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    left: -18px;
+    opacity: 0;
+    width: 10px;
+    height: 10px;
+    margin-top: -10px;
+    background: rgba(0, 0, 0, 0);
+    border: 3px solid #FFF;
+    border-top: none;
+    border-left: none;
+    -webkit-transform: rotate(135deg);
+            transform: rotate(135deg);
+    -webkit-transition: opacity 0.5s, top 0.5s, right 0.5s;
+    transition: opacity 0.5s, top 0.5s, right 0.5s;
+  }
 
-form > .add-note:hover span:after, form > .add-note:active span:after {
-  -webkit-transition: opacity 0.5s, top 0.5s, right 0.5s;
-  transition: opacity 0.5s, top 0.5s, right 0.5s;
-  opacity: 1;
-  border-color: #fff;
-  left: 0;
-  top: 60%;
-}
+  .add-note:hover span, form > .add-note:active span {
+    padding-left: 30px;
+  }
 
-form > #clearForm {
-  width: 200px;
-  height: auto;
-  padding: 10px;
-  margin-top: 15px;
+  .add-note:hover span:after, form > .add-note:active span:after {
+    -webkit-transition: opacity 0.5s, top 0.5s, right 0.5s;
+    transition: opacity 0.5s, top 0.5s, right 0.5s;
+    opacity: 1;
+    border-color: #fff;
+    left: 0;
+    top: 60%;
+  }
+
+  #clearForm {
+    width: 40%;
+    height: auto;
+    padding: 10px;
+    margin-top: 15px;
+  } 
 }
 
 /*----------------

@@ -206,7 +206,7 @@ h4#sub:after {
 **     The Form       ***
 -----------------------*/
 form#toDoList {
-  width: 50%;
+  width: 70%;
   height: auto;
   margin: 65px auto;
   padding: 25px;
@@ -301,14 +301,19 @@ form > .placeTop input:focus {
   transform: scale(1.15);
 }
 
-form > .add-note {
+#buttons {
+  width: 70%;
+  margin: auto;
+}
+
+#buttons .add-note {
   letter-spacing: 2px;
   text-align: center;
   color: #fff;
   font-size: 24px;
   font-family: alefBold;
   padding: 10px;
-  width: 250px;
+  width: 40%;
   height: auto;
   margin-top: 30px;
   margin-right: 20px;
@@ -322,7 +327,7 @@ form > .add-note {
   transition: all 0.5s;
 }
 
-form > .add-note:hover, form > #add-note:active {
+#buttons .add-note:hover, #buttons form > #add-note:active {
   color: #fff;
   border-color: blue;
   -webkit-animation: tada 1s;
@@ -331,7 +336,7 @@ form > .add-note:hover, form > #add-note:active {
   background: linear-gradient(to top, #044a99 30%, #438af5 100%);
 }
 
-form > .add-note span {
+#buttons .add-note span {
   display: inline-block;
   position: relative;
   padding-left: 0;
@@ -339,7 +344,7 @@ form > .add-note span {
   transition: padding-left 0.5s;
 }
 
-form > .add-note span:after {
+#buttons .add-note span:after {
   content: ' ';
   position: absolute;
   top: 0;
@@ -358,11 +363,11 @@ form > .add-note span:after {
   transition: opacity 0.5s, top 0.5s, right 0.5s;
 }
 
-form > .add-note:hover span, form > .add-note:active span {
+#buttons .add-note:hover span, #buttons form > .add-note:active span {
   padding-left: 30px;
 }
 
-form > .add-note:hover span:after, form > .add-note:active span:after {
+#buttons .add-note:hover span:after, #buttons form > .add-note:active span:after {
   -webkit-transition: opacity 0.5s, top 0.5s, right 0.5s;
   transition: opacity 0.5s, top 0.5s, right 0.5s;
   opacity: 1;
@@ -371,8 +376,8 @@ form > .add-note:hover span:after, form > .add-note:active span:after {
   top: 60%;
 }
 
-form > #clearForm {
-  width: 200px;
+#buttons #clearForm {
+  width: 40%;
   height: auto;
   padding: 10px;
   margin-top: 15px;
